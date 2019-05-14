@@ -162,6 +162,8 @@ public class MainGame {
 				if(x + j < 0 || x+ j >= 10 || y + i < 0 || y + i >= 10 || ( i == 0 && j == 0)) continue; //배열경계를 나갈경우
 				if(board[y + i][x + j] == 0 && reveal[y+i][x+j] == MineStatus.LOCKED) {
 					reveal(y+i, x+j);
+				}else if(board[y + i][x + j] != 0 && reveal[y+i][x+j] == MineStatus.LOCKED) {
+					reveal[y + i][x + j] = MineStatus.REVEAL;
 				}
 			}
 		}

@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Subject2 {
+public class Subject3 {
 	public static void main(String[] args) {
 		String url = "http://www.weather.go.kr/wid/queryDFSRSS.jsp?zone=4113559000";
 		
