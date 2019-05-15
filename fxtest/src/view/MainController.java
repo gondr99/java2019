@@ -36,7 +36,6 @@ public class MainController {
 			sum += i;
 		}
 		lbl1.setText(sum.toString());
-		
 	}
 	
 	public void btn2Handle() {
