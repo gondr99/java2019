@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="120.0" minWidth="500.0" onMouseClicked="#openBrowser" style="-fx-border-color: rgba(0,0,0,0.5); -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.NewsItemController">
+   <children>
+      <Label fx:id="lblTitle" layoutX="14.0" layoutY="14.0" prefHeight="33.0" text="뉴스 제목 들어가는 곳" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDesc" alignment="TOP_LEFT" layoutX="14.0" layoutY="53.0" prefHeight="57.0" prefWidth="380.0" text="뉴스의 요악이 쓰여질 곳." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>
