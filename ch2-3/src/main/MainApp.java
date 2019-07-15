@@ -7,6 +7,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 public class MainApp {
 	public static void main(String[] args) {
 		String clientId = "I4efUNYceXBEveuDIDI1"; //발급받은 클라이언트 ID를 넣습니다.
@@ -15,8 +21,8 @@ public class MainApp {
 		
 		Scanner in = new Scanner(System.in);
 		
-		System.out.println("판별할 검색어를 입력하세요");
-		String word = in.nextLine();  //성인검색어인지를 판별할 검색어
+		System.out.println("뉴스 검색어를 입력하세요.");
+		String word = in.nextLine();  //검색할 뉴스 단어를 입력하세요.
 		
 		try {
 			word = URLEncoder.encode(word, "UTF-8");
@@ -29,7 +35,7 @@ public class MainApp {
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            if(responseCode==200) { // 정상 호출
+            if(responseCode == 200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             } else {  // 에러 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
@@ -40,16 +46,32 @@ public class MainApp {
                 response.append(inputLine);
             }
             br.close();
-            System.out.println(response.toString());
             
-//            String json = response.toString();
+            //문자열을 받은후
+            String json = response.toString();
+            Gson gson = new Gson(); //Gson객체를 선언하고
+            //ResponseVO 형태로 변환한다.
+//            ResponseVO responseVO = gson.fromJson(json, ResponseVO.class);
 //            
-//            int idx = json.lastIndexOf(":");
-//            json = json.substring(idx + 3, json.length() - 2);
+//            List<ItemVO> newsList = responseVO.getItems();
 //            
-//            int result = Integer.parseInt(json);
-//            System.out.println(result);
-					
+//            for(ItemVO item : newsList) {
+//            	System.out.println(item.getTitle() + "[" + item.getPubDate() + "]");
+//            }
+            //json 파서를 가져와서 파싱한다.
+            JsonParser parser = new JsonParser();
+            //파싱한 결과를 json element로 저장한다.
+            JsonElement element = parser.parse(json);
+            //json element를 object로 가져와서 거기서 total이라는 속서을 가져온뒤
+            //해당 값을 정수형으로 가져온다
+            JsonArray items = element.getAsJsonObject().get("items").getAsJsonArray();
+            
+            for(JsonElement item : items) {
+            	String title = item.getAsJsonObject().get("title").getAsString();
+            	System.out.println(title);
+            }
+            
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("API호출중 오류 발생");
