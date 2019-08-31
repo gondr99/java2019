@@ -34,4 +34,18 @@ public class Block {
 		this.fill = fill;
 		this.color = color;
 	}
+	
+	public boolean getFill() {
+		return fill;
+	}
+	
+	public Color getColor() {
+		return color;
+	}
+	
+	//블럭데이터 카피
+	public void copyData(Block block) {
+		this.fill = block.getFill();
+		this.color = block.getColor();
+	}
 }

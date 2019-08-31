@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.MainController">
+   <children>
+      <ProgressBar fx:id="bar" layoutX="9.0" layoutY="22.0" prefHeight="38.0" prefWidth="381.0" progress="0.22">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ProgressBar>
+      <Button fx:id="btnStart" layoutX="116.0" layoutY="102.0" mnemonicParsing="false" onAction="#start" prefHeight="38.0" prefWidth="82.0" text="시작" />
+      <Button fx:id="btnPause" layoutX="210.0" layoutY="102.0" mnemonicParsing="false" onAction="#pause" prefHeight="38.0" prefWidth="82.0" text="일시정지" />
+      <Button fx:id="btnStop" layoutX="304.0" layoutY="102.0" mnemonicParsing="false" onAction="#stop" prefHeight="38.0" prefWidth="82.0" text="초기화" />
+      <Label fx:id="lblStatus" alignment="CENTER_RIGHT" layoutX="318.0" layoutY="68.0" prefHeight="28.0" prefWidth="66.0" text="12 %">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

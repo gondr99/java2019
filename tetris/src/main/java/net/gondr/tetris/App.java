@@ -3,6 +3,7 @@ package net.gondr.tetris;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -10,7 +11,7 @@ public class App extends Application
 {
 	public static App app; //싱글톤 기법을 활용하기 위한 스태틱 변수
 	
-	public Game game;
+	public Game game = null;
 	
     public static void main( String[] args )
     {
@@ -27,6 +28,10 @@ public class App extends Application
 			
 			Scene scene = new Scene(anchorPane);
 			
+			scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+				if(game != null)
+					game.keyHandler(e); //게임의 이벤트 핸들러로 넘겨준다.
+			});
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
