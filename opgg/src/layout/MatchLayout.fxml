@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="120.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="layout.MatchController">
+   <children>
+      <ImageView fx:id="imgChamp" fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblPos" layoutX="132.0" layoutY="14.0" prefHeight="30.0" prefWidth="169.0" text="포지션" />
+      <Label fx:id="lblChamp" layoutX="316.0" layoutY="14.0" prefHeight="30.0" prefWidth="169.0" text="챔피언" />
+      <Label fx:id="lblPlatform" layoutX="496.0" layoutY="14.0" prefHeight="30.0" prefWidth="169.0" text="플랫폼" />
+      <Label fx:id="lblSeason" layoutX="688.0" layoutY="14.0" prefHeight="30.0" prefWidth="169.0" text="시즌" />
+      <Label fx:id="lblQueue" layoutX="132.0" layoutY="60.0" prefHeight="30.0" prefWidth="169.0" text="큐" />
+      <Label fx:id="lblRole" layoutX="316.0" layoutY="60.0" prefHeight="30.0" prefWidth="169.0" text="역할" />
+      <Label fx:id="lblTime" layoutX="496.0" layoutY="60.0" prefHeight="30.0" prefWidth="169.0" text="게임시간" />
+   </children>
+</AnchorPane>
+
