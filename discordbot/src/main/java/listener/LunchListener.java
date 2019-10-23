@@ -1,5 +1,7 @@
 package listener;
 
+import java.time.LocalDate;
+
 import domain.LunchVO;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -47,6 +49,12 @@ public class LunchListener extends ListenerAdapter {
 					sayMsg(e.getChannel(), param);
 				}
 				break;
+			case "help":
+				String helpMsg = "사용할 수 있는 명령어 입니다. \n";
+				helpMsg += "1. !yy echo <하고싶은 말> : 하고싶은 말을 반복해줍니다  \n";
+				helpMsg += "2. !yy lunch <날짜 20190920형태> : 해당 날짜의 급식을 가져옵니다. \n";
+				helpMsg += "3. !yy time <날짜 20190920형태> <반> : 해당 학급의 해당 날짜의 시간표를 출력합니다.\n";
+				sayMsg(e.getChannel(), helpMsg);
 			case "lunch":
 				LunchVO lunchVO = lunch.getMenu(param);
 				if(lunchVO.getMenuString().isEmpty()) {
@@ -59,6 +67,33 @@ public class LunchListener extends ListenerAdapter {
 				if(params.length != 2) {
 					sayMsg(e.getChannel(), "시간표조회 : !yy time 날짜(20190920) 반(1또는 2) 으로 입력하세요");
 				}else {
+					if (params[0].equals("내일")) {
+						LocalDate now = LocalDate.now(); //현재시간 알아내서
+						int year = now.getYear();
+						int month = now.getMonthValue();
+						int day = now.getDayOfMonth() + 1;
+						
+						LocalDate nextDay = LocalDate.of(year, month, day);
+						
+						year = nextDay.getYear();
+						month = nextDay.getMonthValue();
+						day = nextDay.getDayOfMonth();
+						
+						String monthStr = "";
+						String dayStr = "";
+						if(month < 10) {
+							monthStr = "0" + month;
+						}else {
+							monthStr = String.valueOf(month);
+						}
+						
+						if(day < 10) {
+							dayStr = "0" + day;
+						}else {
+							dayStr = String.valueOf(day);
+						}
+						params[0] = year + monthStr + dayStr;
+					}
 					sayMsg(e.getChannel(), tt.getTime(params[0], params[1]));
 				}
 			}

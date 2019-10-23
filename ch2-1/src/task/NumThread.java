@@ -1,6 +1,6 @@
 package task;
 
-public class NumThread {
+public class NumThread extends Thread{
 	private long sum = 0;
 	private long target;
 	
